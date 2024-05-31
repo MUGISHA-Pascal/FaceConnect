@@ -122,6 +122,3 @@ res.setHeader("location","/page1");
         }
     })
 })
-server.listen(3000,"localhost",()=>{
-    console.log("running on : http://localhost:3000")
-})
