@@ -6,17 +6,32 @@ const mongoose = require("mongoose");
         console.log("connected to mongodb");
 
         const courseSchema = new mongoose.Schema({
-          
-        });
-
-        const Course = mongoose.model("Course", courseSchema);
-
+            name: String,
+            author: String,
+            tags: [String],
+            date: { type: Date, default: Date.now },
+            ispublished: Boolean
+        })
+        const Course = mongoose.model("Course", courseSchema)
         const course = new Course({
-        
-        });
+            name: "nodejs",
+            author: "pascal",
+            tags: ["backend", "API"],
+            ispublished: true
+        })
+        // inserting document into the database
+        // const results = await course.save();
+        // console.log(results);
+        // querying document into the database
+        const getResults = await Course.find({
+            name: "nodejs",
+            author: "pascal"
+        })
+            .limit(10)
+            .sort({ name: 1 })
+            .select({ name: 1, tags: 1 })
+            console.log("the found results is ",getResults)
 
-        const results = await course.save();
-        console.log(results);
     } catch (err) {
         console.error("not connected", err);
     }
