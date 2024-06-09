@@ -1,4 +1,23 @@
-const mongoose=require("mongoose")
-const db=mongoose.connect("mongodb://localhost:27017/pascal")
-.then(()=>console.log("connected to mongodb"))
-.catch((err)=>console.log("not connected",err))
+const mongoose = require("mongoose");
+
+(async () => {
+    try {
+        await mongoose.connect("mongodb://localhost:27017/pascal");
+        console.log("connected to mongodb");
+
+        const courseSchema = new mongoose.Schema({
+          
+        });
+
+        const Course = mongoose.model("Course", courseSchema);
+
+        const course = new Course({
+        
+        });
+
+        const results = await course.save();
+        console.log(results);
+    } catch (err) {
+        console.error("not connected", err);
+    }
+})();
