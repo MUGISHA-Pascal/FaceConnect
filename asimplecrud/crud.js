@@ -11,7 +11,7 @@ app.use(bodyParser.json());
             Name: String,
             Age: Number
         })
-        const personalData = await mongoose.model("personalData", personaldata);
+        const personalData =mongoose.model("personalData", personaldata);
 
         app.post("/postdata", async (req, res) => {
             const personal1 = new personalData({
@@ -19,9 +19,19 @@ app.use(bodyParser.json());
                 Age: req.body.Age
             })
             const prsn = await personal1.save();
+            console.log(prsn)
             res.status(201).json(prsn);
         })
-        app.get
+        app.get("/getdata",async(req,res)=>{
+            const dbdata=await personalData.find();
+            res.json(dbdata);
+            console.log(dbdata)
+        })
+        app.delete("/deletedata",async(req,res)=>{
+            const deleted=await personalData.deleteMany({Name:"pascal"})
+            console.log(deleted)
+            res.json(deleted)
+        })
     } catch (err) {
         console.log("the error is ", err)
     }
