@@ -46,30 +46,51 @@ const mongoose = require("mongoose");
         // console.log("found results are : ",foundResults)
 
         // // logical query operator
-        const course1 = new Course({
-            name: "Nodejs",
-            author: "pascal",
-            tags: ["backend", "API"],
-            ispublished: true
-          });
-          const course2 = new Course({
-            name: "Reactjs",
-            author: "pascal",
-            tags: ["props", "components"],
-            ispublished: true
-          });
+        // const course1 = new Course({
+        //     name: "Nodejs",
+        //     author: "pascal",
+        //     tags: ["backend", "API"],
+        //     ispublished: true
+        //   });
+        //   const course2 = new Course({
+        //     name: "Reactjs",
+        //     author: "pascal",
+        //     tags: ["props", "components"],
+        //     ispublished: true
+        //   });
       
-          // Save each Course instance separately
-          const results1 = await course1.save();
-          console.log("Course 1 saved:", results1);
+        //   // Save each Course instance separately
+        //   const results1 = await course1.save();
+        //   console.log("Course 1 saved:", results1);
+        //   const results2 = await course2.save();
+        //   console.log("Course 2 saved:", results2);
       
-          const results2 = await course2.save();
-          console.log("Course 2 saved:", results2);
       
-      
-        const foundResults=await Course.find().or([{name:"Reactjs"},{name: "Nodejs"}])
-        console.log("found results : ",foundResults)
-    } catch (err) {
-        console.error("not connected", err);
-    }
+        // const foundResults=await Course.find().or([{name:"Reactjs"},{name: "Nodejs"}])
+        // console.log("found results : ",foundResults)
+    //    // regular expressions
+    //     const result= await Course.find({
+    //         name:/.*N.*/
+    //     })
+    //     console.log(result)
+
+// // counting documents
+// const results=await Course.find().count()
+// console.log(results)
+
+// // updating documents
+// const filter={name:"Nodejs"}
+// const update={$set:{name:"Reactjs"}}
+// const result=await Course.updateMany(filter,update)
+// console.log(result)
+
+//finding content
+// const result=await Course.find()
+// console.log(result)
+
+
+
+} catch (err) {
+    console.error("not connected", err);
+}
 })();
