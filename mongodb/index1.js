@@ -58,39 +58,41 @@ const mongoose = require("mongoose");
         //     tags: ["props", "components"],
         //     ispublished: true
         //   });
-      
+
         //   // Save each Course instance separately
         //   const results1 = await course1.save();
         //   console.log("Course 1 saved:", results1);
         //   const results2 = await course2.save();
         //   console.log("Course 2 saved:", results2);
-      
-      
+
+
         // const foundResults=await Course.find().or([{name:"Reactjs"},{name: "Nodejs"}])
         // console.log("found results : ",foundResults)
-    //    // regular expressions
-    //     const result= await Course.find({
-    //         name:/.*N.*/
-    //     })
-    //     console.log(result)
+        //    // regular expressions
+        //     const result= await Course.find({
+        //         name:/.*N.*/
+        //     })
+        //     console.log(result)
 
-// // counting documents
-// const results=await Course.find().count()
-// console.log(results)
+        // // counting documents
+        // const results=await Course.find().count()
+        // console.log(results)
 
-// // updating documents
-// const filter={name:"Nodejs"}
-// const update={$set:{name:"Reactjs"}}
-// const result=await Course.updateMany(filter,update)
-// console.log(result)
+        // // updating documents
+        // const filter={name:"Nodejs"}
+        // const update={$set:{name:"Reactjs"}}
+        // const result=await Course.update(filter,update)
+        // console.log(result)
 
-//finding content
-// const result=await Course.find()
-// console.log(result)
+        //finding content
+        // const result=await Course.find()
+        // console.log(result)
 
+        //deleting documents in the database
+        // const results=await Course.deleteMany({name:"Reactjs"})
+        // console.log("results")
 
-
-} catch (err) {
-    console.error("not connected", err);
-}
+    } catch (err) {
+        console.error("not connected", err);
+    }
 })();
