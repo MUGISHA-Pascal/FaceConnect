@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cors=require('cors');
 app.use(express.json());
+app.use(cors());
 (async () => {
     await mongoose.connect("mongodb://localhost:27017/pascal");
     const locationdb = new mongoose.Schema({
@@ -15,7 +17,7 @@ app.use(express.json());
         const resulti = await result.save();
         console.log(resulti);
         res.status(201).json(resulti);
-    });
+    }); 
     app.get("/getlocation", async (req, res) => {
         const result = await locationDb.find();
         console.log(result);
