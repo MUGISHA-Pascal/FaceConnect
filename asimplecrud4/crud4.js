@@ -24,7 +24,16 @@ app.use(cors());
        res.json(gotbooks);
     });
     app.put("/updatebooks",async (req,res)=>{
-        const filter={name=}
+        const filter={name:"mugisha"}
+        const update={$set:{name:"daddy"}};
+        const updatedbooks=await booksmodel.updateMany(filter,update);
+        console.log(updatedbooks);
+        res.json(updatedbooks);
+    })
+    app.delete("/deletebooks",async (req,res)=>{
+        const deletebooks=await booksmodel.deleteMany({name:"daddy"});
+        console.log(deletebooks);
+        res.json(deletebooks);
     })
 })();
 app.listen(3000, () => {
