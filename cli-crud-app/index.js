@@ -1,7 +1,6 @@
-const fs = require("fs");
-const inquirer = require("inquirer");
-const chalk = require("chalk");
-
+import fs from "fs";
+import inquirer from "inquirer";
+import chalk from "chalk";
 const dataFilePath = "./data.json";
 
 function loadData() {
