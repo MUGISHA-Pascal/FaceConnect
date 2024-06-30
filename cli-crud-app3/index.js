@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
 
-pathofdata = "./data.json";
+const pathofdata = "./data.json";
 
 function loadData() {
   try {
@@ -77,7 +77,7 @@ function createRecord() {
 function readRecord() {
   const data = loadData();
   console.log(chalk.yellow("the records : "));
-  data.foreach((record) => {
+  data.forEach((record) => {
     console.log(
       `the id : ${record.id} , the name : ${record.name} and the age is ${record.age}`
     );
@@ -119,9 +119,25 @@ function updateRecord() {
 }
 
 function deleteRecord() {
-  inquirer.prompt([
-    {
-      type: "input",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "id",
+        message: "Enter the id of the record to delete : ",
+      },
+    ])
+    .then((answers) => {
+      const data = loadData();
+      const newData = data.filter((record) => record.id !== answers.id);
+      if (data.length !== newData.length) {
+        saveData(newData);
+        console.log(chalk.green("data is updated successfully !"));
+      } else {
+        console.log(chalk.red("the data is not updated  successfully !"));
+      }
+      mainMenu();
+    });
 }
+
+mainMenu();
