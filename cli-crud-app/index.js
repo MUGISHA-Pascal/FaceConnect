@@ -39,6 +39,7 @@ function mainMenu() {
           deleteRecord();
           break;
         case "Exit":
+          process.exit();
           console.log(chalk.green("Goodbye!"));
         default:
           mainMenu();
