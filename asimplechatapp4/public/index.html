@@ -27,7 +27,7 @@
       socket.on("chat message", function (msg) {
         var item = document.createElement("li");
         item.textContent = msg;
-        messageSent.appendChild = item;
+        messageSent.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
     </script>
