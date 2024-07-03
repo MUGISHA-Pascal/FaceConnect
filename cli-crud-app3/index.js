@@ -24,7 +24,7 @@ function mainMenu() {
         type: "input",
         name: "action",
         message: "what do you want to do ? : ",
-        choices: ["Creat", "Read", "Update", "Delete", "Exit"],
+        choices: ["Create", "Read", "Update", "Delete", "Exit"],
       },
     ])
     .then((answers) => {
