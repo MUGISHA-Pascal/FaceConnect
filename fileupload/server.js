@@ -5,7 +5,7 @@ const port=3000;
 const app=express();
 
 const storage=multer.diskStorage({
-    destination:(req,file,cd)=>{
+    destination:(req,file,cb)=>{
         cb(null,"uploads/");
     }
 },{
