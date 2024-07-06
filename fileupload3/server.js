@@ -4,7 +4,7 @@ const multer=require("multer");
 const app=express();
 
 const storage=multer.diskStorage({
-    diskStorage:(req,file,cb)=>{
+    destination:(req,file,cb)=>{
         cb(null,"uploads/");
     },filename:(req,file,cb)=>{
         cb(null,file.originalname);
