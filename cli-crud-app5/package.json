@@ -1,0 +1,21 @@
+{
+  "name": "cli-crud-app5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "inquirer": "^9.3.5",
+    "nodemon": "^3.1.4"
+  }
+}
