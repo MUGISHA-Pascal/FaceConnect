@@ -16,12 +16,12 @@ app.use(express.json());
   app.post("/postsongs", async (req, res) => {
     const { song, singer } = req.body;
     const songs = new songsDb({ song, singer });
-    const saved = songs.save();
+    const saved = await songs.save();
     console.log(saved);
     res.json(saved);
   });
   app.get("/getsongs", async (req, res) => {
-    const found = new songsDb.find();
+    const found = await songsDb.find();
     console.log(found);
     res.json(found);
   });
@@ -36,5 +36,13 @@ app.use(express.json());
     res.json(updated);
   });
 
-  app.delete("/");
+  app.delete("/deletesongs/:song", async (req, res) => {
+    const filter = { song: req.params.song };
+    const deleted = await songsDb.deleteMany(filter);
+    console.log(deleted);
+    res.json(deleted);
+  });
 })();
+app.listen(3000, () => {
+  console.log("app is running on port 3000");
+});
