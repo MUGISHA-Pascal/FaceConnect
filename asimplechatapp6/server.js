@@ -4,8 +4,9 @@ const socketIo = require("socket.io");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+const path = require("path");
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
   console.log("user connected");

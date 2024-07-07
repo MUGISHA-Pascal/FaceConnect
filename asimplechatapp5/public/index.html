@@ -21,6 +21,7 @@
         e.preventDefault();
         if (message.value) {
           socket.emit("chat message", message.value);
+          message.value = "";
         }
       });
       socket.on("chat message", function (msg) {

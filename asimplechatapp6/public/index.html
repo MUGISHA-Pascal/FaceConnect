@@ -17,16 +17,18 @@
       const message = document.getElementById("message");
       const messagelist = document.getElementById("messagelist");
       const form = document.getElementById("form");
-      form.addEventListener("submit", (e) => {
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (message.value) {
           socket.emit("chat message", message.value);
+          message.value = "";
         }
-        socket.on("chat message", (msg) => {
-          const item = document.createElement("li");
-          item.textContent = msg;
-          messagelist.appendChild(item);
-        });
+      });
+      socket.on("chat message", function (msg) {
+        const item = document.createElement("li");
+        item.textContent = msg;
+        messagelist.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
       });
     </script>
   </body>
