@@ -7,5 +7,18 @@
   </head>
   <body>
     <h1>Welcome to Chat rooms</h1>
+    <form id="room-form">
+      <input type="text" id="room" placeholder="Enter room name" required />
+      <button>Submit</button>
+    </form>
+    <script>
+      document
+        .getElementById("room-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const room = document.getElementById("room").value;
+          window.location.href = `/chat.html?room=${room}`;
+        });
+    </script>
   </body>
 </html>

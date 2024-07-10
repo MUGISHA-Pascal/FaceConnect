@@ -23,8 +23,10 @@ io.on("connection", (socket) => {
   });
   socket.on("chatMessage", async ({ msg, room }) => {
     const message = new Message({ content: msg, room });
+    console.log(msg);
     await message.save();
     io.to(room).emit("message", msg);
+    console.log(`Message emitted: ${msg} to room: ${room}`);
   });
   socket.on("disconnect", () => {
     console.log("user disconnected");
