@@ -4,6 +4,9 @@ const app = express();
 const server = http.createServer(app);
 const socketIo = require("socket.io");
 const io = socketIo(server);
+const Message = require("../modules/message");
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/chatapp2");
 
 app.use(express.static("../public"));
 

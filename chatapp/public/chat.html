@@ -23,6 +23,17 @@
       const socket = io();
       const room = new URLSearchParams(window.location.search).get("room");
       socket.emit("joinRoom", { room });
+      // Fetch previous messages
+      fetch(`/chat/${room}`)
+        .then((response) => response.json())
+        .then((messages) => {
+          messages.forEach((message) => {
+            const div = document.createElement("div");
+            div.textContent = message.content;
+            document.getElementById("messages").appendChild(div);
+          });
+        });
+
       document
         .getElementById("message-form")
         .addEventListener("submit", function (e) {
