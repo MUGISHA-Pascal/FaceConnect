@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const messageschema = mongoose.Schema({
+const messageschema = new mongoose.Schema({
   content: String,
   room: String,
   createdAt: {

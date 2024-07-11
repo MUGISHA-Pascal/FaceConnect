@@ -7,8 +7,10 @@ const io = socketIo(server);
 const Message = require("../modules/message");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/chatapp2");
+const chatroutes = require("../routes/chat");
 
 app.use(express.static("../public"));
+app.use("/chat", chatroutes);
 
 io.on("connection", (socket) => {
   console.log("user connected");

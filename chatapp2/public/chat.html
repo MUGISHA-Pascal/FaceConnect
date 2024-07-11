@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chat room</title>
+  </head>
+  <body>
+    <div id="message-container"></div>
+    <form id="form">
+      <input type="text" id="message" placeholder="enter the message" />
+      <button type="submit">Send message</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var room = new URLSearchParams(window.location.search).get("room");
+      socket.emit("joinRoom", { room });
+    </script>
+  </body>
+</html>
