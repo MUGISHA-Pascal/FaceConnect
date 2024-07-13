@@ -22,9 +22,9 @@ io.on("connection", (socket) => {
     console.log("user joined the room");
   });
   socket.on("chatMessage", async ({ msg, room }) => {
-    const message = new Message({ content: msg, room: room });
+    const message = new Message({ content: msg, room });
     await message.save();
-    io.to(room).emit("message", { msg });
+    io.to(room).emit("message", msg);
     console.log(`Message emitted: ${msg} to room: ${room}`);
   });
 });
