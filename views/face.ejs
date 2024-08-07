@@ -9,7 +9,10 @@
     />
   </head>
   <body class="bg-gray-900">
-    <a href="/auth/logout">logout</a>
+    <nav class="flex flex-row justify-between p-4 pr-10 bg-blue-400 items-center">
+      <h1 class="text-3xl font-bold ">FaceConnect</h2>
+      <a href="/auth/logout" class="bg-gray-900 text-blue-400 p-2 pl-4 pr-4 rounded-2xl">logout</a>
+    </nav>
     <h1 class="text-blue-400 font-bold text-2xl flex justify-center mt-10">
       Face connect
     </h1>
@@ -41,6 +44,39 @@
       </button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
-    <script src="../public/script.js"></script>
+    <script>
+      const peer = new Peer(undefined, {
+        host: "localhost",
+        port: 9000,
+        path: "/",
+      });
+
+      const localvideo = document.getElementById("localvideo");
+      const remotevideo = document.getElementById("remotevideo");
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: true })
+        .then((stream) => {
+          localvideo.srcObject = stream;
+          peer.on("call", (call) => {
+            call.answer(stream);
+            call.on("stream", (remotestream) => {
+              remotevideo.srcObject = remotestream;
+            });
+          });
+          document
+            .getElementById("connect_btn")
+            .addEventListener("click", () => {
+              const remoteid = document.getElementById("peer_id").value;
+              const call = peer.call(remoteid, stream);
+              call.on("stream", (remotestream) => {
+                remotevideo.srcObject = remotestream;
+              });
+            });
+        });
+      peer.on("open", (id) => {
+        document.getElementById("peer_id").value = id;
+      });
+    </script>
   </body>
 </html>
