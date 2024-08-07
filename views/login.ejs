@@ -3,8 +3,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>login</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <a href="/auth/google">google +</a>
+  <body class="bg-gray-900 text-gray-900">
+    <nav class="flex flex-row justify-between p-4 pr-10 bg-blue-400 items-center">
+      <h1 class="text-3xl font-bold ">FaceConnect</h2>
+      <a href="/" class="bg-gray-900 text-blue-400 p-2 pl-4 pr-4 rounded-2xl">Home</a>
+    </nav>
+    <section class="flex flex-col space-y-4 border-l-4 border-blue-400  p-4 m-4">
+    <p class="text-blue-400">login with google account</p>
+    <a href="/auth/google" class="bg-blue-400 text-gray-900 p-2 pl-4 rounded-md w-24">google +</a>
+    </section>
   </body>
 </html>
