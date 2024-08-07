@@ -3,7 +3,7 @@ profileRoutes.get("/", (req, res) => {
   if (!req.user) {
     res.render("login");
   } else {
-    res.render("face");
+    res.render("face", { user: req.user });
   }
 });
 module.exports = profileRoutes;

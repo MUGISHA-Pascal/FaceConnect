@@ -11,10 +11,13 @@
   <body class="bg-gray-900">
     <nav class="flex flex-row justify-between p-4 pr-10 bg-blue-400 items-center">
       <h1 class="text-3xl font-bold ">FaceConnect</h2>
+        <div class="flex flex-row space-x-4">
       <a href="/auth/logout" class="bg-gray-900 text-blue-400 p-2 pl-4 pr-4 rounded-2xl">logout</a>
+      <img src="<%= user.photo %>" class="w-10 rounded-full">
+        </div>
     </nav>
     <h1 class="text-blue-400 font-bold text-2xl flex justify-center mt-10">
-      Face connect
+      Hello <%= user.username %>
     </h1>
     <div class="flex flex-row space-x-10 mt-10 justify-center">
       <video
