@@ -7,7 +7,7 @@ authRoutes.get("/login", (req, res) => {
 authRoutes.get("/logout", (req, res) => {
   req.session.destroy();
   res.clearCookie("user cookie");
-  res.redirect("/auth/login");
+  res.redirect("/");
 });
 authRoutes.get(
   "/google",

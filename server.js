@@ -21,8 +21,11 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.get("/", (req, res) => {
+  res.render("home");
+});
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.listen(3000, () => {
